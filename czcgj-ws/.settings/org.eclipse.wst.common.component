@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="czcgj-ws">
+        <wb-resource deploy-path="/" source-path="/target/m2e-wtp/web-resources"/>
+        <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
+        <dependent-module archiveName="czcgj-tools-1.0.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/czcgj-tools/czcgj-tools">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="czcgj-im-1.0.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/czcgj-im/czcgj-im">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="czcgj-entity-1.0.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/czcgj-entity/czcgj-entity">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="czcgj-common-1.0.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/czcgj-common/czcgj-common">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="czcgj-service-1.0.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/czcgj-service/czcgj-service">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="czcgj-quartz-1.0.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/czcgj-quartz/czcgj-quartz">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="czcgj-dao-1.0.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/czcgj-dao/czcgj-dao">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="czcgj-aspect-1.0.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/czcgj-aspect/czcgj-aspect">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="czcgj-mq-1.0.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/czcgj-mq/czcgj-mq">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="czcgj-push-1.0.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/czcgj-push/czcgj-push">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="czcgj-redis-1.0.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/czcgj-redis/czcgj-redis">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <property name="context-root" value="czcgj-ws"/>
+        <property name="java-output-path" value="/czcgj-ws/target/classes"/>
+    </wb-module>
+</project-modules>

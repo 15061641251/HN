@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sbq.dao.IDeptDao">
+
+    <select id="getDeptInfo" resultType="Dept" parameterType="map">
+        SELECT
+        d.INT_ID,
+        d.STATEFLAG,
+        to_char(d.TIME_STAMP, 'yyyy-mm-dd hh24:mi:ss') TIME_STAMP,
+        to_char(d.CREATE_TIME, 'yyyy-mm-dd hh24:mi:ss') CREATE_TIME,
+        d.DEPT_NAME,
+        d.DEPT_SHORT,
+        d.PARENT_ID,
+        d.TEL,
+        d.FAX,
+        d.ORDER_INDEX
+        FROM a_dept d
+        WHERE stateflag = 0
+        <if test="int_id != null">
+            and d.int_id = #{int_id}
+        </if>
+        <if test="parent_id != null">
+            and d.parent_id = #{parent_id}
+        </if>
+        order by PARENT_ID,ORDER_INDEX,int_id ASC
+    </select>
+
+
+    <select id="getChildDeptsByParentId" resultType="Dept"
+            parameterType="map">
+		SELECT
+		  d.INT_ID,
+		  d.STATEFLAG,
+		  to_char(d.TIME_STAMP, 'yyyy-mm-dd hh24:mi:ss')  TIME_STAMP,
+		  to_char(d.CREATE_TIME, 'yyyy-mm-dd hh24:mi:ss') CREATE_TIME,
+		  d.DEPT_NAME,
+		  d.DEPT_SHORT,
+		  d.PARENT_ID,
+		  d.TEL,
+		  d.FAX,
+		  d.ORDER_INDEX
+		FROM a_dept d
+		WHERE stateflag = 0 AND
+			  d.parent_id = #{parent_id}
+		ORDER BY PARENT_ID,ORDER_INDEX,int_id ASC
+	</select>
+
+    <select id="selectAllDepts" resultType="Dept">
+		SELECT
+		  d.INT_ID,
+		  d.STATEFLAG,
+		  d.TIME_STAMP  TIME_STAMP,
+		  d.CREATE_TIME CREATE_TIME,
+		  d.DEPT_NAME,
+		  d.DEPT_SHORT,
+		  d.PARENT_ID,
+		  d.TEL,
+		  d.FAX,
+		  d.ORDER_INDEX
+		FROM a_dept d
+		WHERE stateflag = 0
+		ORDER BY PARENT_ID,ORDER_INDEX,int_id ASC
+	</select>
+
+    <select id="getAllDeptList" parameterType="map" resultType="com.sbq.entity.dto.DeptOrUserDto">
+		SELECT
+		  u.int_id                                        ,
+		  u.stateflag,
+		  date_format(u.create_time, '%Y-%m-%d %T') create_time,
+		  date_format(u.time_stamp, '%Y-%m-%d %T')  time_stamp,
+		  u.dept_name                                     name,
+		  u.dept_short,
+		  u.parent_id,
+		  u.fax,
+		  u.tel,
+		'dept' type,
+		u.order_index
+		FROM a_dept u
+		WHERE stateflag = 0
+		ORDER BY u.PARENT_ID,u.ORDER_INDEX,int_id ASC
+	</select>
+
+    <select id="getLastDeptList" parameterType="map" resultType="com.sbq.entity.dto.DeptOrUserDto">
+		SELECT
+		  u.int_id                                        ,
+		  u.stateflag,
+		  date_format(u.create_time, '%Y-%m-%d %T') create_time,
+		  date_format(u.time_stamp, '%Y-%m-%d %T')  time_stamp,
+		  u.dept_name                                     name,
+		  u.dept_short,
+		  u.parent_id,
+		  u.fax,
+		  u.tel,
+		'dept' type,
+		u.order_index
+		FROM a_dept u
+		WHERE u.time_stamp > date(#{time_stamp})
+		ORDER BY u.PARENT_ID,u.ORDER_INDEX,int_id ASC
+	</select>
+
+    <select id="getAllDeptListDeptMemberDto" resultType="com.sbq.entity.dto.DeptMemberDto">
+        SELECT
+		  u.int_id                                        ,
+		  u.stateflag,
+		  date_format(u.create_time, '%Y-%m-%d %T') create_time,
+		  date_format(u.time_stamp, '%Y-%m-%d %T')  time_stamp,
+		  u.dept_name                                     name,
+		  u.dept_short,
+		  u.parent_id,
+		  u.fax,
+		  u.tel,
+		'dept' type,
+		u.order_index
+		FROM a_dept u
+		WHERE stateflag = 0
+		ORDER BY u.PARENT_ID,u.ORDER_INDEX,int_id ASC
+    </select>
+</mapper>

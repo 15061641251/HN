@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sbq.dao.IDeviceDao">
+
+    <update id="updateDeviceInfoById">
+        update t_device t set t.time_stamp = now()
+        <if test="need_tip != null">
+            ,t.need_tip = #{need_tip}
+        </if>
+        <if test="no_tip_minute != null">
+            ,t.no_tip_minute = #{no_tip_minute}
+        </if>
+        where 1 = 1
+        <if test="int_id != null">
+            and t.int_id = #{int_id}
+        </if>
+    </update>
+    <update id="updateDeviceByDeviceId">
+        update t_device t set t.time_stamp = now()
+        <if test="last_warn_status != null">
+            ,t.last_warn_status = #{last_warn_status}
+        </if>
+        where 1 = 1
+        and t.device_id = #{device_id}
+    </update>
+    <select id="getInfoByMap" resultType="com.sbq.entity.dto.DeviceDto">
+        select t.*,company.company_name,area.area_name from t_device t
+        LEFT join t_area area
+        on area.int_id = t.area_id
+        LEFT join t_company company
+        on company.int_id = t.company_id
+        where 1 = 1
+        <if test="int_id != null">
+            and t.int_id = #{int_id}
+        </if>
+        <if test="device_id != null">
+            and t.device_id = #{device_id}
+        </if>
+        limit 1
+    </select>
+    <select id="getDeviceListByMap" resultType="com.sbq.entity.dto.DeviceDto">
+        select t.*,c.company_name,q.status,area.area_name,
+        (select count(*) from t_device_warn_rule r where r.device_int_id = t.int_id) is_set_rule from t_device t
+        LEFT join t_company c
+        on c.int_id = t.company_id
+        LEFT join t_interval_quartz q
+        on q.device_int_id = t.int_id
+        LEFT join t_area area
+        on area.int_id = t.area_id
+        where 1 = 1
+        <if test="device_name != null">
+            and t.device_name like "%${device_name}%"
+        </if>
+        <if test="company_name != null">
+            and c.company_name like "%${company_name}%"
+        </if>
+        <if test="company_id != null">
+            and t.company_id = #{company_id}
+        </if>
+        <if test="device_id != null">
+            and t.device_id = #{device_id}
+        </if>
+    </select>
+</mapper>

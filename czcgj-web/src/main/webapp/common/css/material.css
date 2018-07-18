@@ -1,0 +1,671 @@
+@charset "utf-8";
+/* CSS Document */
+html, body, div, span, dl, dd, h1, h2, h3, h4, h5, h6, p, form {
+	margin: 0;;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	background: transparent;
+}
+
+ol, ul {
+	margin: 0;
+	padding: 0;
+}
+
+ul, li {
+	list-style: none;
+}
+
+img {
+	border: 0;
+}
+
+a {
+	text-decoration: none;
+	color: inherit;
+	display: block;
+}
+
+i {
+	font-style: normal;
+}
+
+.fl {
+	float: left;
+}
+
+.fr {
+	float: right;
+}
+
+.f14 {
+	font-size: 14px;
+}
+
+.f16 {
+	font-size: 16px;
+}
+
+.f18 {
+	font-size: 18px;
+}
+
+.f24 {
+	font-size: 24px;
+}
+
+.mt3 {
+	margin-top: 5px;
+}
+
+.mt5 {
+	margin-top: 5px;
+}
+
+.ml5 {
+	margin-left: 5px;
+}
+
+.mr5 {
+	margin-right: 5px;
+}
+
+.ml10 {
+	margin-left: 10px;
+}
+
+.mr10 {
+	margin-right: 10px;
+}
+
+.mt10 {
+	margin-top: 10px;
+}
+
+.mb10 {
+	margin-bottom: 10px;
+}
+
+.pl10 {
+	padding-left: 10px;
+}
+
+.pr10 {
+	padding-right: 10px;
+}
+
+.pt10 {
+	padding-top: 10px;
+}
+
+.pb10 {
+	padding-bottom: 10px;
+}
+
+.pl20 {
+	padding-left: 20px;
+}
+
+.tac {
+	text-align: center;
+}
+
+.height40 {
+	height: 40px;
+}
+
+.txtl {
+	text-align: left;
+}
+
+.txtc {
+	text-align: center;
+}
+
+.txtr {
+	text-align: right;
+}
+
+/*================公共样式=================*/
+body {
+	font-size: 12px;
+	font-family: "微软雅黑", Arial;
+	background: #eee;
+	color: #737373;
+}
+
+.contactPage, .unfinishedPage {
+	margin: 2%;
+}
+
+.busHandlingPage {
+	width: 100%;
+}
+
+.contactTitle, .unfinishedTitle, .busTitle {
+	padding-left: 10px;
+	background: #398acb;
+	line-height: 40px;
+	color: #fff;
+	font-size: 16px;
+}
+
+.busTitle {
+	margin-bottom: 10px;
+}
+
+.publicStyle {
+	font-size: 14px;
+	line-height: 25px;
+	padding-left: 5px;
+}
+
+.publicStyle td {
+	overflow: hidden;
+	white-space: nowrap;
+	word-break: keep-all;
+	word-wrap: normal;
+}
+
+.busContent li {
+	width: 100%;
+	height: 130px;
+	background: url(../images/listbg.png) repeat-x;
+}
+
+/*--------------------------------联系方式contact.html-----------------------------------*/
+.contactCell {
+	background: #fff;
+	border: 1px solid #ccc;
+	border-radius: 6px;
+	margin-top: 10px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+.publicStyle .label {
+	text-align: right;
+	width: 30%;
+	line-height: 25px;
+}
+
+.publicStyle .content {
+	text-align: left;
+	width: 70%;
+	line-height: 25px;
+}
+
+/*--------------------------------未竣工工单unfinished.html-----------------------------------*/
+.crumbs {
+	padding: 10px 10px;
+	border: 1px solid #ccc;
+	border-radius: 6px;
+	background: #fff;
+	font-size: 14px;
+}
+
+.line {
+	border-bottom: 2px solid #ddd;
+	margin-bottom: 10px;
+}
+
+.normalFlow {
+	border-bottom: 2px solid skyblue;
+	font-size: 14px;
+	line-height: 26px;
+	display: inline-block;
+	*display: inline;
+	*zoom: 1;
+	margin-bottom: -2px;
+}
+
+.flow_a {
+	color: #fe7201
+}
+
+/*--------------------------------业务受理情况busHandling.html-----------------------------------*/
+.busContent li {
+	background: url(../images/listbg.png) repeat-x;
+	margin-top: 5px;
+}
+
+.publicStyle_bus .label {
+	width: 80px;
+	text-align: center;
+	float: center;
+}
+
+.publicStyle_bus .content {
+	text-align: center;
+	float: center
+}
+
+.banquan {
+	position: absolute;
+	top: 450px;
+	width: 100%;
+	height: 20px;
+	line-height: 20px;
+	text-align: center;
+	color: #333;
+}
+
+.banquan1 {
+	width: 100%;
+	height: 20px;
+	line-height: 20px;
+	text-align: center;
+	color: #333;
+}
+
+.divbutton {
+	padding: 10px 10px;
+	margin: 10px;
+	border: 1px solid #eee;
+	border-radius: 6px;
+	background: #eee;
+	font-size: 14px;
+	width: 42%;
+	height: 150px;
+	float: left;
+	text-align: center
+}
+
+.btncss {
+	width: 100%;
+	margin: 0 auto;
+	height: 38px;
+	color: #FFF;
+	border: none;
+	background: url(../images/material/butbg.jpg) repeat-x;
+}
+
+.btncss2 {
+	width: 100%;
+	margin: 0 auto;
+	height: 38px;
+	line-height: 38px;
+	font-size: 14px;
+	color: #333;
+	border: none;
+	background: url(../../images/material/btnbg2.png) repeat-x 0px -41px;
+}
+
+.fontbold {
+	font-weight: bold;
+	color: #000;
+}
+/*------------------列表----------------*/
+.list {
+	border: #CCCCCC 1px solid;
+	background: #FFF;
+	margin: 10px 10px 0 10px;
+	overflow: hidden;
+}
+
+.list ul {
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+.list ul li {
+	padding-top: 3px;
+	padding-bottom: 2px;
+	overflow: hidden;
+}
+
+.list_head {
+	width: 100px;
+	height: 60px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+.list_head img {
+	width: 80px;
+	height: 80px;
+}
+
+.list_zi {
+	/*padding-left:10px;*/
+	overflow: hidden;
+}
+
+.list_zi1 {
+	width: 60%;
+	padding-left: 10px;
+	overflow: hidden;
+}
+
+.list_arrow {
+	width: 20px;
+	height: 22px;
+	text-align: center;
+	margin-top: 20px;
+}
+/*-----------------字体设置---------------*/
+.lanzi16 {
+	width: 100%;
+	height: 20px;
+	padding: 3px 0px 3px 0px;
+	font-size: 16px;
+	color: #3131fa;
+	font-weight: bold;
+	line-height: 20px;
+	overflow: hidden;
+}
+
+.huizi12 {
+	width: 100%;
+	font-size: 12px;
+	color: #666666;
+	line-height: 20px;
+	overflow: hidden;
+}
+
+.huizi10 {
+	width: 100%;
+	font-size: 10px;
+	color: #666666;
+	line-height: 20px;
+	height: 20px;
+	overflow: hidden;
+}
+/*---------------------三级页面-----------------*/
+.content {
+	width: 100%;
+	margin: 10px auto;
+	overflow: hidden;
+}
+
+.content img {
+	width: 100%;
+}
+
+.content_tit {
+	width: 96%;
+	font-size: 16px;
+	line-height: 25px;
+	font-weight: bold;
+	padding-left: 2%;
+	padding-right: 2%;
+}
+
+.content_time {
+	width: 96%;
+	font-size: 12px;
+	line-height: 30px;
+	height: 30px;
+	padding-left: 2%;
+	padding-right: 2%;
+	color: #999999;
+	border-bottom: #999999 1px solid;
+}
+
+.content_tu {
+	width: 98%;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	text-align: center;
+	overflow: hidden;
+}
+
+.content_tu img {
+	width: 300px;
+	height: 150px;
+}
+
+.content_zi {
+	width: 100%;
+	line-height: 25px;
+	color: #333333;
+}
+
+.menucd {
+	max-width: 100%;
+	height: 47px;
+	background: url(../../images/szwap/211.jpg) repeat-x;
+}
+
+.sz_cdiv {
+	max-width: 320px;
+	height: 47px;
+	margin: 0px auto;
+}
+
+.cdul {
+	margin: 0px auto;
+	padding-top: 7px;
+}
+
+.cdul li {
+	float: left;
+	list-style-type: none;
+	margin-left: 21px;
+}
+
+.cdul li a {
+	width: 72px;
+	height: 29px;
+	display: block;
+	color: #fff;
+	text-shadow: 1px 1px 0px #000000;
+	text-decoration: none;
+	line-height: 29px;
+	font-size: 18px;
+	text-align: center;
+}
+
+.liaselected {
+	background: #F3C
+}
+
+.cdys {
+	background: url(../../images/szwap/cdbg.png);
+}
+
+.ntit {
+	height: 45px;
+	background: url(../../images/szwap/ntit.jpg) repeat-x;
+	text-align: center;
+}
+
+.nfh {
+	width: 50px;
+	height: 27px;
+	background: url(../../images/szwap/fh.jpg) no-repeat;
+	float: left;
+	margin-left: 10px;
+	margin-top: -35px;
+}
+
+.nbt {
+	font-size: 20px;
+	color: #fff;
+	text-align: center;
+	line-height: 45px;
+}
+
+.detailscrumbs {
+	padding: 10px 10px;
+	border-bottom: 1px solid #ccc;
+	background: #fff;
+	font-size: 14px;
+	overflow: hidden;
+}
+
+.font000 {
+	color: #000;
+}
+
+.font111 {
+	color: #b7b7b7;
+}
+
+.rightarrow {
+	float: right;
+	text-align: right;
+	width: 5%;
+}
+/* 问卷调查 */
+.txtl {
+	text-align: left;
+}
+
+.txtc {
+	text-align: center;
+}
+
+.txtr {
+	text-align: right;
+}
+
+.pl10 {
+	padding-left: 10px;
+}
+
+.pr10 {
+	padding-right: 10px;
+}
+
+.pt10 {
+	padding-top: 10px;
+}
+
+.pb10 {
+	padding-bottom: 10px;
+}
+
+.black {
+	color: #000;
+}
+/*-------------------------悬浮框----------------------*/
+.xuanfu {
+	width: 260px;
+	height: 280px;
+	margin: 0 auto;
+	background: url(../images/xuanfu.png) no-repeat;
+	margin-top: 150px;
+}
+
+.xuanfu_tit {
+	width: 260px;
+	height: 40px;
+	overflow: hidden;
+}
+
+.exit {
+	width: 28px;
+	height: 27px;
+	padding-left: 10px;
+	padding-top: 6px;
+}
+
+.xuanfu_titZi {
+	width: 210px;
+	height: 40px;
+	line-height: 40px;
+	font-size: 18px;
+	font-weight: bold;
+}
+
+.xuanfu_main {
+	width: 240px;
+	overflow: hidden;
+	padding: 20px 10px;
+	font-size: 14px;
+	line-height: 24px;
+}
+
+.xuanfu_btn {
+	width: 90px;
+	height: 30px;
+	margin: 0 auto;
+}
+
+/*-------------------------调研----------------------*/
+.ques_tit {
+	width: 100%;
+	line-height: 30px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	color: #000;
+}
+
+.ques_line {
+	width: 100%;
+	height: 7px;
+	background: url(../../images/ques_line.png) repeat-x;
+}
+
+.ques_main {
+	width: 90%;
+	overflow: hidden;
+	margin: 0 auto;
+	font-size: 14px;
+}
+
+.ques_main_tit {
+	margin-left: 20px;
+	width: 90%;
+	line-height: 20px;
+	font-size: 16px;
+	font-weight: bold;
+	color: #000;
+}
+
+.ques_list {
+	width: 90%;
+	line-height: 24px;
+	font-size: 14px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 5px;
+	border: #097ad2 1px solid;
+	background: #FFFFFF;
+	padding-left: 3px;
+	padding-right: 3px;
+}
+
+.julicss {
+	margin-top: 3px;
+}
+
+.textarea_css {
+	width: 90%;
+	height: 62px;
+	font-size: 14px;
+	line-height: 20px;
+	text-align: left;
+	border: #097ad2 1px solid;
+}
+
+.ques_btn {
+	width: 90px;
+	height: 30px;
+	margin: 0 auto;
+	margin-bottom: 20px;
+}
+
+.jrchoujiang {
+	width: 100%;
+	height: 55px;
+	line-height: 25px;
+	color: #FFF;
+	font-size: 14px;
+	background: url(../images/jrchoujiang_bg.png) repeat-x;
+	border-bottom: #844f22 1px solid;
+	margin-top: 10px;
+	text-align: center;
+	padding-top: 5px;
+}
+
+.jrchoujiang a {
+	color: #FFF;
+}
+
+.jrchoujiang a:hover {
+	color: #bcbc01;
+	text-decoration: underline;
+}

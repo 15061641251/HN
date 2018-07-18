@@ -1,0 +1,66 @@
+.btn {
+    margin-bottom: 3px;
+    padding-top: 5px;
+}
+
+.btn-primary {
+    background-color: #3c8dbc;
+    border-color: #367fa9;
+}
+
+.btn {
+    border-radius: 3px;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    border: 1px solid transparent;
+}
+
+td{
+    padding-left: 5px;
+}
+table {
+    width: 100%;
+}
+
+.main-div table td {
+    padding: 6px 6px 6px 0px;
+    line-height: 28px;
+    padding-left: 5px;
+    border-bottom: 1px solid #dddddd;
+}
+
+.main-div > table td {
+    padding: 6px 6px 6px 0px;
+    line-height: 28px;
+    padding-left: 5px;
+    border-bottom: 1px solid #dddddd;
+    border-right: 1px solid #dddddd;
+}
+
+td {
+    font-size: 16px;
+}
+
+.valuetd {
+    text-align: left;
+}
+
+* {
+    padding: 0px;
+    margin: 0px;
+    -webkit-font-smoothing: antialiased;
+    font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+td > label {
+    font-size: 14px;
+    font-weight: normal;
+}
+
+.title-search > table > tbody > tr > td {
+    border-bottom: none;
+}
+
+.input_small_width{
+    width:150px;
+}

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sbq.dao.IDeviceTipDao">
+
+    <insert id="insertDeviceTipByMap">
+        insert into t_device_tip
+        (stateflag, time_stamp, create_time, device_int_id, phone_num, status)
+        VALUES
+        <foreach collection="deviceTipList" item="item" index="index" separator=",">
+            (0,now(),now(),#{item.device_int_id},#{item.phone_num},#{item.status})
+        </foreach>
+    </insert>
+    <delete id="clearDeviceTipByMap">
+        delete from t_device_tip
+        where 1 = 1
+        <if test="device_int_id != null">
+            and device_int_id =#{device_int_id}
+        </if>
+    </delete>
+
+    <select id="getDeviceTipListByMap" resultType="com.sbq.entity.DeviceTip">
+        SELECT * from t_device_tip t
+        where 1 = 1
+        <if test="device_int_id != null">
+            and t.device_int_id = #{device_int_id}
+        </if>
+    </select>
+</mapper>

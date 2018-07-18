@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sbq.dao.IDeviceWarnRuleDao">
+    <insert id="insertDeviceWarnRuleList">
+        insert into t_device_warn_rule
+        (stateflag, time_stamp, create_time, device_int_id, data_key, condition_type, data_value)
+        VALUES
+        <foreach collection="deviceWarnRuleList" item="item" index="index" separator=",">
+            (0,now(),now(),#{item.device_int_id},#{item.data_key},#{item.condition_type},#{item.data_value})
+        </foreach>
+    </insert>
+    <delete id="clearDeviceWarnRuleByMap">
+        delete from t_device_warn_rule
+        where 1 = 1
+        <if test="device_int_id != null">
+            and device_int_id =#{device_int_id}
+        </if>
+    </delete>
+
+    <select id="getDeviceWarnRuleListByMap" resultType="com.sbq.entity.DeviceWarnRule">
+        SELECT * from t_device_warn_rule t
+        where 1 = 1
+        <if test="device_int_id != null">
+            and t.device_int_id = #{device_int_id}
+        </if>
+    </select>
+</mapper>

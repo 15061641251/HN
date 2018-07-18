@@ -1,0 +1,90 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.sbq</groupId>
+    <artifactId>czcgj</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0.0</version>
+    <modules>
+        <module>czcgj-aspect</module>
+        <module>czcgj-common</module>
+        <module>czcgj-dao</module>
+        <module>czcgj-entity</module>
+        <module>czcgj-mq</module>
+        <module>czcgj-redis</module>
+        <module>czcgj-service</module>
+        <module>czcgj-tools</module>
+        <module>czcgj-quartz</module>
+        <module>czcgj-push</module>
+        <module>czcgj-web</module>
+        <module>czcgj-im</module>
+        <module>czcgj-ws</module>
+    </modules>
+    <name>czcgj</name>
+    <description>czcgj系统</description>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <java.encoding>UTF-8</java.encoding>
+        <java.version>1.8</java.version>
+        <czcgj.version>1.0.0</czcgj.version>
+        <czcgj-common.version>${czcgj.version}</czcgj-common.version>
+        <czcgj-dal.version>${czcgj.version}</czcgj-dal.version>
+        <czcgj-entity.version>${czcgj.version}</czcgj-entity.version>
+        <czcgj-fs.version>${czcgj.version}</czcgj-fs.version>
+        <czcgj-mail.version>${czcgj.version}</czcgj-mail.version>
+        <czcgj-mq.version>${czcgj.version}</czcgj-mq.version>
+        <czcgj-services.version>${czcgj.version}</czcgj-services.version>
+        <czcgj-tools.version>${czcgj.version}</czcgj-tools.version>
+        <czcgj-web.version>${czcgj.version}</czcgj-web.version>
+
+        <spring-version>4.3.6.RELEASE</spring-version>
+        <commons-lang3.version>3.1</commons-lang3.version>
+        <logback.version>1.2.1</logback.version>
+        <aspectj.version>1.8.10</aspectj.version>
+
+        <slf.version>1.7.10</slf.version>
+        <mybatis.version>3.3.0</mybatis.version>
+        <mapper.version>3.4.0</mapper.version>
+        <mybatis_spring.version>1.2.3</mybatis_spring.version>
+        <jackson.version>2.6.1</jackson.version>
+        <spring-boot.version>1.5.1.RELEASE</spring-boot.version>
+        <cxf.version>3.1.6</cxf.version>
+        <swagger.version>2.6.1</swagger.version>
+        <activiti.version>5.22.0</activiti.version>
+        <hutool.version>3.2.1</hutool.version>
+        <poi.version>3.16</poi.version>
+    </properties>
+
+    <dependencies>
+
+
+    </dependencies>
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                    <encoding>${java.encoding}</encoding>
+                </configuration>
+            </plugin>
+            <plugin>
+                <artifactId>maven-resources-plugin</artifactId>
+                <configuration>
+                    <encoding>${java.encoding}</encoding>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <configuration>
+                    <skip>true</skip>
+                </configuration>
+            </plugin>
+        </plugins>
+        <finalName>czcgj</finalName>
+    </build>
+</project>

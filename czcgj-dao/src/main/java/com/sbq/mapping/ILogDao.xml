@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sbq.dao.ILogDao">
+    <select id="getLogListByMap" resultType="com.sbq.entity.Log">
+        select * from t_log t
+        where 1 = 1
+        <if test="module_name != null">
+            and t.module_name like "%${module_name}%"
+        </if>
+        <if test="day != null">
+            and DATE_FORMAT(t.create_time,'%Y-%m-%d') = #{day}
+        </if>
+        <if test="ip != null">
+            and t.ip like "%${ip}%"
+        </if>
+        order by t.create_time desc
+    </select>
+</mapper>

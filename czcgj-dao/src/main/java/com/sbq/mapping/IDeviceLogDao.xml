@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sbq.dao.IDeviceLogDao">
+
+    <insert id="ifNoExistAndInsert">
+        <![CDATA[
+
+        {call if_log_no_exist_and_insert(#{device_int_id},#{device_id},#{log_time},#{data},#{device_type})}
+
+        ]]>
+    </insert>
+
+    <select id="getDeviceLogListByMap" resultType="com.sbq.entity.dto.DeviceLogDto">
+        select t.*,t2.device_name from t_device_log t
+        LEFT join t_device t2
+        on t.device_int_id = t2.int_id
+        where 1 = 1
+        <if test="log_start_time != null ">
+            and t.log_time >= #{log_start_time}
+        </if>
+        <if test="log_end_time != null ">
+            <![CDATA[ and t.log_time <= #{log_end_time}]]>
+        </if>
+        <if test="device_int_id != null">
+            and t.device_int_id = #{device_int_id}
+        </if>
+        <if test="device_id != null">
+            and t.device_id = #{device_id}
+        </if>
+        <if test="status != null">
+            and t.status = #{status}
+        </if>
+        group by t.log_time
+        order by t.log_time desc,t.create_time desc
+        <if test="limit != null">
+            limit #{limit}
+        </if>
+    </select>
+
+</mapper>

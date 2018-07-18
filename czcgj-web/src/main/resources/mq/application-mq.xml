@@ -1,0 +1,37 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:rabbit="http://www.springframework.org/schema/rabbit"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+    http://www.springframework.org/schema/rabbit
+    http://www.springframework.org/schema/rabbit/spring-rabbit-1.1.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context-2.5.xsd">
+
+    <!-- 连接配置 -->
+    <rabbit:connection-factory id="connectionFactory" host="${rabbitmq.host}" username="${rabbitmq.account}"
+                               password="${rabbitmq.pwd}" port="${rabbitmq.port}"/>
+
+    <rabbit:admin connection-factory="connectionFactory"/>
+
+    <!-- spring template声明-->
+    <rabbit:template exchange="amqpExchange" id="amqpTemplate" connection-factory="connectionFactory"
+                     message-converter="jsonMessageConverter"/>
+
+    <!-- 消息对象json转换类 -->
+    <bean id="jsonMessageConverter" class="org.springframework.amqp.support.converter.Jackson2JsonMessageConverter"/>
+
+    <rabbit:queue id="push" name="push" durable="true" auto-delete="false" exclusive="false"/>
+
+    <rabbit:direct-exchange name="amqpExchange" durable="true" auto-delete="false" id="amqpExchange">
+        <rabbit:bindings>
+            <rabbit:binding queue="push" key="push"/>
+        </rabbit:bindings>
+    </rabbit:direct-exchange>
+
+    <rabbit:listener-container connection-factory="connectionFactory" acknowledge="auto">
+        <rabbit:listener queues="push" ref="queueListenter"/>
+    </rabbit:listener-container>
+
+</beans>

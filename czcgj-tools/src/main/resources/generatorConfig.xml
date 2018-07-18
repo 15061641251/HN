@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+
+    <!-- mvn mybatis-generator:generate -->
+    <context id="Mysql" targetRuntime="MyBatis3Simple" defaultModelType="flat">
+
+        <plugin type="tk.mybatis.mapper.generator.MapperPlugin">
+            <property name="mappers" value="tk.mybatis.mapper.common.Mapper"/>
+            <!-- caseSensitive默认false，当数据库表名区分大小写时，可以将该属性设置为true -->
+            <property name="caseSensitive" value="true"/>
+        </plugin>
+
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://112.21.191.58:8082/mlcz"
+                        userId="root"
+                        password="123456Abc?">
+        </jdbcConnection>
+
+        <javaModelGenerator targetPackage="com.sbq.model" targetProject="/Users/zhangyuan/Desktop/mlcz"/>
+
+        <sqlMapGenerator targetPackage="com.sbq.mapping"
+                         targetProject="/Users/zhangyuan/Desktop/mlcz"/>
+
+        <javaClientGenerator targetPackage="com.sbq.dao" targetProject="/Users/zhangyuan/Desktop/mlcz"
+                             type="XMLMAPPER"/>
+
+        <table tableName="%">
+            <generatedKey column="int_id" sqlStatement="Mysql" identity="true"/>
+        </table>
+    </context>
+</generatorConfiguration>

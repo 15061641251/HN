@@ -1,0 +1,26 @@
+.wrapper span.logo-lg{
+    font-family:'华文行楷';
+    font-size:21px;
+    text-align: left;
+}
+
+.page-tabs-content{
+    margin-left: 0px;
+}
+
+button i.fa {
+    margin-left: 3px;
+
+}
+
+.btn-group button.dropdown i.fa{
+    padding-left: 3px;
+}
+
+.btn-group ul.dropdown-menu{
+    min-width: 128px;
+}
+
+.content-iframe{
+    background-color: #ffffff;
+}

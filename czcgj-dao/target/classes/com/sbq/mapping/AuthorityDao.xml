@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sbq.dao.IAuthorityDao">
+
+	<select id="getALLEnabledAuthorityListByMap" resultType="map">
+		SELECT 
+		    t1.int_id authority_id,
+		    t1.name authority_name,
+		    t3.name resources_name,
+		    t3.path,
+		    t3.weburl,
+		    t3.logo,
+		    t3.parent_id,
+		    t3.int_id resources_id 
+		FROM
+		    t_authority t1 
+		    LEFT JOIN t_auth_res t2 
+		        ON t1.int_id = t2.authority_id 
+		    LEFT JOIN t_resources t3 
+		        ON t2.resources_id = t3.int_id 
+		WHERE t1.is_enabled = 1 
+		    AND t3.is_enabled = 1 
+        order by t3.ordernum asc
+	</select>
+
+	<select id="getMenusByMap" parameterType="map" resultType="menus">
+		SELECT DISTINCT t3.int_id resources_id,
+		t3.name resources_name,
+		t3.weburl,
+		t3.logo,
+		t3.parent_id,
+		t3.is_show,
+		t3.ORDERNUM
+		FROM t_authority t1,
+		t_auth_res t2,
+		t_resources t3
+		WHERE t1.is_enabled    = 1
+		AND t1.int_id          = t2.authority_id
+		AND t2.resources_id    = t3.int_id
+		AND t3.is_enabled      = 1
+		<if test="authority_id != null">
+			AND t1.int_id         IN (${authority_id})
+		</if>
+        <if test="type != null">
+            AND t3.type         IN (${type})
+        </if>
+		ORDER BY t3.ORDERNUM
+	</select>
+
+	<insert id="insertEntity" parameterType="Authority"
+		useGeneratedKeys="true" keyProperty="int_id">
+		insert into
+		t_authority(name,description,code,is_enabled,create_time,dept_id)
+		values(#{name},#{description},#{code},#{is_enabled},#{create_time},#{dept_id})
+	</insert>
+
+	<update id="updateAuthInfo" parameterType="Authority">
+		update t_authority set name=#{name},description=#{description} where int_id=#{int_id}
+	</update>
+
+</mapper>  

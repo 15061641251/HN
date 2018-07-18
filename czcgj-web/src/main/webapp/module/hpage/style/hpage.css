@@ -1,0 +1,142 @@
+table {
+	width: 100%;
+}
+
+input {
+	width: 70px;
+	background: transparent;
+	border: 0;
+}
+
+th {
+	padding-top: 2px;
+	padding-bottom: 2px;
+}
+
+div {
+	overflow-y: hidden;
+}
+
+.red {
+	color: red;
+}
+
+.left_div {
+	height: 100%;
+	width: 33.3%;
+	float: left;
+	margin: 0.1%;
+}
+
+.left_1 {
+	height: 350px;
+	width: 100%;
+	margin: 0%;
+	float: left;
+}
+
+.left_2 {
+	height: 300px;
+	width: 100%;
+	margin: 0%;
+	float: left;
+}
+
+/*.center_div {*/
+	/*height: 100%;*/
+	/*width: 31%;*/
+	/*float: left;*/
+	/*!*margin: 0.1%;*!*/
+	/*margin:10px 1% 0 1%;*/
+/*}*/
+
+.center_1 {
+	height: 300px;
+	width: 100%;
+	margin: 0%;
+	float: left;
+}
+
+.center_2 {
+	height: 300px;
+	width: 100%;
+	margin: 0%;
+	float: left;
+}
+
+.rigth_div {
+	height: 100%;
+	width: 39%;
+	float: right;
+	/*margin: 0.1%;*/
+	margin:10px 2% 0 1%;
+ }
+
+.right_1 {
+	height: 350px;
+	width: 100%;
+	margin: 0%;
+	float: right;
+}
+
+.right_2 {
+	height: 300px;
+	width: 100%;
+	margin: 0%;
+	float: right;
+}
+
+.h_title {
+	font-size: 15px;
+	font-weight: bold;
+	line-height: 30px;
+}
+
+.selected {
+	background-color: #59aaae !important;
+	color:#fff;
+}
+
+.div-button {
+	padding: 1px;
+}
+
+.div-head {
+	height: 30px;
+}
+
+#todo_div {
+	width: 90%;
+	float: left;
+}
+
+#email_title {
+	text-align: left;
+	width: 150px;
+	display: block;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	float: left;
+}
+
+#todo {
+	text-align: left;
+	width: 210px;
+	display: block;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	float: left;
+}
+
+.theme {
+            text-align: left;
+            width: 260px;
+            display: block;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            float: left;
+        }
+   

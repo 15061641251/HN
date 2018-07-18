@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sbq.dao.ICzcgDao">
+
+    <select id="getDeviceListAndLastLog" resultType="com.sbq.entity.dto.CzcgDeviceLastLogDto">
+        select
+        device.device_name,device.device_id,device.lat,device.lng,device.address,device.last_warn_status,device.last_warn_time,
+        company.company_name,area.area_name,
+        log3.data,log3.status,log3.log_time,device.type,device.device_type from t_device device
+        LEFT JOIN t_company company on company.int_id = device.company_id
+        LEFT JOIN t_area area on area.int_id = device.area_id
+        LEFT JOIN (
+        select * from (select * from t_device_log log
+        ORDER BY log.log_time desc limit 10000000000) as log2
+        group by log2.device_id ) as log3 on log3.device_id = device.device_id
+        where 1 = 1 and log3.data is not null
+        <if test="area_id != null">
+            and device.area_id = #{area_id}
+        </if>
+        <if test="area_name != null">
+            and area.area_name = #{area_name}
+        </if>
+        <if test="last_warn_status != null">
+            and device.last_warn_status = #{last_warn_status}
+        </if>
+        <if test="last_warn_status != null">
+            and device.last_warn_status = #{last_warn_status}
+        </if>
+        <if test="status != null">
+            and log3.status = #{status}
+        </if>
+        <if test="start_log_time != null">
+            <![CDATA[ log3.log_time >= #{start_log_time} ]]>
+        </if>
+        <if test="end_log_time != null">
+            <![CDATA[ log3.log_time <= #{end_log_time} ]]>
+        </if>
+    </select>
+</mapper>

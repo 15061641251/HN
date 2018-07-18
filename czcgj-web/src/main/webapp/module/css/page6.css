@@ -1,0 +1,188 @@
+body{
+    background: #000a34;
+}
+.wrap{
+    width: 1278px;
+    /* height: 590px; */
+    margin: 0 auto;
+    padding: 25px;
+    box-sizing: border-box;
+    background: #000a34;
+    font-size: 13px;
+    color: #C4DDF8;
+    /*border: 1px solid #2680d3;*/
+
+}
+/* 头部 */
+.top {
+    width: 1267px;
+    /*height: 32px;*/
+    margin: 0 auto;
+    /*padding: 1px 25px 25px 25px;*/
+    box-sizing: border-box;
+    line-height: 32px;
+    /*background: darkorange;*/
+}
+
+.top_left {
+    float: left;
+    width: 50%;
+    height: 100%;
+    /*background: darkgreen;*/
+}
+
+.top_left span.text {
+
+    color: #46a9fa;
+}
+
+.top_left span.text_1 {
+    color: #46a9fa;
+    margin-left: 12px;
+}
+
+.top_right {
+    float: left;
+    width: 50%;
+    height: 100%;
+    text-align: right;
+}
+
+.top_right span.text {
+
+    color: #46a9fa;
+}
+
+.top_right span.text_1 {
+    color: #46a9fa;
+    margin-left: 14px;
+}
+
+
+/* 头部 */
+.head{
+    width: 100%;
+    color: white;
+    position:relative;
+}
+.head div {
+    float: left;
+    font-family: "Microsoft YaHei", "微软雅黑", "MicrosoftJhengHei";
+    font-size: 20px;
+}
+.head img.head_left{
+    position: absolute;
+    left: 43px;
+    top: 76px;
+}
+.head img.head_right{
+    position: absolute;
+    left: 779px;
+    top: 44px;
+}
+.head div:first-child span {
+    position: absolute;
+    width: 124px;
+    left: 297px;
+    top: 80px;
+    font-size: 19px;
+    font-weight: bold;
+    color: #c3efff;
+}
+
+.head div:first-child .smal {
+    font-size: 13px;
+    left: 140px;
+    top: 12px;
+}
+
+.head div:first-child + div {
+    position: relative;
+    left: 21px;
+    bottom: 5px;
+}
+
+.head div:first-child + div span {
+    display: inline-block;
+    width: 341px;
+    position: absolute;
+    top: 42px;
+    left: 444px;
+    padding: 0px 10px;
+    font-size: 25px;
+    letter-spacing: 1px;
+    font-weight: bold;
+}
+
+.head div:first-child + div + div {
+    position: relative;
+    left: 68px;
+}
+
+.head div:first-child + div + div span {
+    position: absolute;
+    width: 124px;
+    left: 844px;
+    top: 48px;
+    font-size: 19px;
+    font-weight: bold;
+    color: #c3efff;
+}
+
+.head div:first-child + div + div .smal {
+    font-size: 13px;
+    left: 130px;
+    top: 12px;
+}
+
+.clear {
+    clear: both;
+}
+img.img_content{
+    width: 1256px;
+    position: absolute;
+    top: 2px;
+    left: -20px;
+}
+/* 内容 */
+.page-content{
+    width: 100%;
+    height: 550px;
+    margin-top: 60px;
+    padding: 30px;
+    position: relative;
+    border: 1px solid #2680d3;
+}
+.top{
+    width: 100%;
+    height: 48%;
+    float: left;
+}
+.top_left{
+    width: 33%;
+    height: 100%;
+    border: 1px solid #2680d3;
+    float: left;
+}
+
+.top_center{
+    width: 33%;
+    height: 100%;
+    border: 1px solid #2680d3;
+    float: left;
+    margin-left: 0.5%;
+}
+.top_right{
+    width: 33%;
+    height: 100%;
+    float: left;
+    margin-left: 0.5%;
+    border: 1px solid #2680d3;
+}
+.bottom{
+    width: 100%;
+    height: 50%;
+    float: left;
+    margin-top: 1%;
+    border: 1px solid #2680d3;
+}

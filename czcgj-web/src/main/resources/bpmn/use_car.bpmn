@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" xmlns:tns="http://www.activiti.org/test" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" expressionLanguage="http://www.w3.org/1999/XPath" id="m1488805290425" name="" targetNamespace="http://www.activiti.org/test" typeLanguage="http://www.w3.org/2001/XMLSchema">
+  <process id="user_car_key" isClosed="false" isExecutable="true" processType="None">
+    <startEvent id="start" name="填写申请单"/>
+    <endEvent id="end" name="结束"/>
+    <userTask activiti:candidateGroups="leader" activiti:exclusive="true" id="leader_verity" name="主任审批"/>
+    <exclusiveGateway gatewayDirection="Unspecified" id="_8" name="主任审核是否通过"/>
+    <sequenceFlow id="_9" sourceRef="leader_verity" targetRef="_8"/>
+    <userTask activiti:candidateGroups="top" activiti:exclusive="true" id="top_verity" name="局领导审核"/>
+    <sequenceFlow id="_11" sourceRef="_8" targetRef="top_verity">
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${leader_pass}]]></conditionExpression>
+    </sequenceFlow>
+    <exclusiveGateway gatewayDirection="Unspecified" id="_13" name="局领导审核是否通过"/>
+    <sequenceFlow id="_14" sourceRef="top_verity" targetRef="_13"/>
+    <sequenceFlow id="_12" sourceRef="_8" targetRef="end">
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${!leader_pass}]]></conditionExpression>
+    </sequenceFlow>
+    <userTask activiti:candidateGroups="selected" activiti:exclusive="true" id="select_car_user" name="派车人选择车辆和驾驶员"/>
+    <sequenceFlow id="_16" sourceRef="_13" targetRef="select_car_user">
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${top_pass}]]></conditionExpression>
+    </sequenceFlow>
+    <sequenceFlow id="_17" sourceRef="select_car_user" targetRef="end"/>
+    <sequenceFlow id="_18" sourceRef="_13" targetRef="end">
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${!top_pass}]]></conditionExpression>
+    </sequenceFlow>
+    <sequenceFlow id="_2" sourceRef="start" targetRef="leader_verity"/>
+  </process>
+  <bpmndi:BPMNDiagram documentation="background=#3C3F41;count=1;horizontalcount=1;orientation=0;width=842.4;height=1195.2;imageableWidth=832.4;imageableHeight=1185.2;imageableX=5.0;imageableY=5.0" id="Diagram-_1" name="New Diagram">
+    <bpmndi:BPMNPlane bpmnElement="user_car_key">
+      <bpmndi:BPMNShape bpmnElement="start" id="Shape-start">
+        <omgdc:Bounds height="32.0" width="32.0" x="120.0" y="145.0"/>
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds height="32.0" width="32.0" x="0.0" y="0.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="end" id="Shape-end">
+        <omgdc:Bounds height="32.0" width="32.0" x="125.0" y="720.0"/>
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds height="32.0" width="32.0" x="0.0" y="0.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="leader_verity" id="Shape-leader_verity">
+        <omgdc:Bounds height="55.0" width="85.0" x="95.0" y="265.0"/>
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds height="55.0" width="85.0" x="0.0" y="0.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_8" id="Shape-_8" isMarkerVisible="false">
+        <omgdc:Bounds height="32.0" width="32.0" x="125.0" y="360.0"/>
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds height="32.0" width="32.0" x="0.0" y="0.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="top_verity" id="Shape-top_verity">
+        <omgdc:Bounds height="55.0" width="85.0" x="95.0" y="440.0"/>
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds height="55.0" width="85.0" x="0.0" y="0.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="_13" id="Shape-_13" isMarkerVisible="false">
+        <omgdc:Bounds height="32.0" width="32.0" x="125.0" y="540.0"/>
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds height="32.0" width="32.0" x="0.0" y="0.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="select_car_user" id="Shape-select_car_user">
+        <omgdc:Bounds height="55.0" width="85.0" x="100.0" y="615.0"/>
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds height="55.0" width="85.0" x="0.0" y="0.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge bpmnElement="_12" id="BPMNEdge__12" sourceElement="_8" targetElement="end">
+        <omgdi:waypoint x="157.0" y="376.0"/>
+        <omgdi:waypoint x="290.0" y="505.0"/>
+        <omgdi:waypoint x="157.0" y="736.0"/>
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds height="0.0" width="0.0" x="0.0" y="0.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_14" id="BPMNEdge__14" sourceElement="top_verity" targetElement="_13">
+        <omgdi:waypoint x="141.0" y="495.0"/>
+        <omgdi:waypoint x="141.0" y="540.0"/>
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds height="0.0" width="0.0" x="0.0" y="0.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_17" id="BPMNEdge__17" sourceElement="select_car_user" targetElement="end">
+        <omgdi:waypoint x="141.0" y="670.0"/>
+        <omgdi:waypoint x="141.0" y="720.0"/>
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds height="0.0" width="0.0" x="0.0" y="0.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_16" id="BPMNEdge__16" sourceElement="_13" targetElement="select_car_user">
+        <omgdi:waypoint x="141.0" y="572.0"/>
+        <omgdi:waypoint x="141.0" y="615.0"/>
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds height="0.0" width="0.0" x="0.0" y="0.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_18" id="BPMNEdge__18" sourceElement="_13" targetElement="end">
+        <omgdi:waypoint x="125.0" y="556.0"/>
+        <omgdi:waypoint x="55.0" y="640.0"/>
+        <omgdi:waypoint x="125.0" y="736.0"/>
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds height="0.0" width="0.0" x="0.0" y="0.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_2" id="BPMNEdge__2" sourceElement="start" targetElement="leader_verity">
+        <omgdi:waypoint x="136.0" y="177.0"/>
+        <omgdi:waypoint x="136.0" y="265.0"/>
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds height="0.0" width="0.0" x="0.0" y="0.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_9" id="BPMNEdge__9" sourceElement="leader_verity" targetElement="_8">
+        <omgdi:waypoint x="141.0" y="320.0"/>
+        <omgdi:waypoint x="141.0" y="360.0"/>
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds height="0.0" width="0.0" x="0.0" y="0.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="_11" id="BPMNEdge__11" sourceElement="_8" targetElement="top_verity">
+        <omgdi:waypoint x="141.0" y="392.0"/>
+        <omgdi:waypoint x="141.0" y="440.0"/>
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds height="7.0" width="0.0" x="0.0" y="54.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</definitions>

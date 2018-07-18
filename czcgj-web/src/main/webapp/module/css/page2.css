@@ -1,0 +1,404 @@
+ html {
+    height: 100%;
+    background: url("../img/bg.png") center center no-repeat;
+    background-size: cover;
+}
+
+body{
+    height: auto;
+    background: url("../img/bg.png") center center no-repeat;
+    background-size: cover;
+}
+
+.wrap {
+    width: 1313px;
+    /* height: 590px; */
+    margin: 0 auto;
+    padding: 1px 25px 25px 25px;
+    box-sizing: border-box;
+    background: url("../img/bg.png") center center no-repeat;
+    background-size: cover;
+    font-size: 13px;
+    color: #C4DDF8;
+}
+
+.top {
+    width: 1267px;
+    /*height: 32px;*/
+    margin: 0 auto;
+    /*padding: 1px 25px 25px 25px;*/
+    box-sizing: border-box;
+    line-height: 32px;
+    /*background: darkorange;*/
+}
+
+.top_left {
+    float: left;
+    width: 50%;
+    height: 100%;
+    /*background: darkgreen;*/
+}
+
+.top_left span.text {
+
+    color: #46a9fa;
+}
+
+.top_left span.text_1 {
+    color: #46a9fa;
+    margin-left: 12px;
+}
+
+.top_right {
+    float: left;
+    width: 50%;
+    height: 100%;
+    text-align: right;
+}
+
+.top_right span.text {
+
+    color: #46a9fa;
+}
+
+.top_right span.text_1 {
+    color: #46a9fa;
+    margin-left: 14px;
+}
+
+/* 头部 */
+.head {
+    width: 100%;
+    color: white;
+    position: relative;
+}
+
+.head div {
+    float: left;
+    font-family: "Microsoft YaHei", "微软雅黑", "MicrosoftJhengHei";
+    font-size: 20px;
+}
+
+.head img.head_left {
+    position: absolute;
+    cursor: pointer;
+    left: 50px;
+    top: 75px;
+}
+
+.head img.head_rotate {
+    position: absolute;
+    cursor: pointer;
+    left: 368px;
+    top: 75px;
+}
+
+.head img.head_right {
+    position: absolute;
+    cursor: pointer;
+    left: 794px;
+    top: 44px;
+}
+
+.head img.headRotate_right {
+    position: absolute;
+    cursor: pointer;
+    left: 777px;
+    top: 44px;
+}
+
+.head div:first-child span {
+    position: absolute;
+    width: 124px;
+    left: 297px;
+    top: 80px;
+    font-size: 19px;
+    font-weight: bold;
+    color: #c3efff;
+}
+
+.head div:first-child .smal {
+    font-size: 13px;
+    left: 140px;
+    top: 12px;
+}
+
+.head div:first-child + div {
+    position: relative;
+    left: 21px;
+    bottom: 5px;
+}
+
+.head div:first-child + div span {
+    display: inline-block;
+    width: 341px;
+    position: absolute;
+    top: 42px;
+    left: 444px;
+    padding: 0px 10px;
+    font-size: 23px;
+    letter-spacing: 1px;
+    font-weight: bold;
+}
+
+.head div:first-child + div + div {
+    position: relative;
+    left: 68px;
+}
+
+.head div:first-child + div + div span {
+    position: absolute;
+    width: 124px;
+    left: 844px;
+    top: 48px;
+    font-size: 19px;
+    font-weight: bold;
+    color: #c3efff;
+}
+
+.head div:first-child + div + div .smal {
+    font-size: 13px;
+    left: 130px;
+    top: 12px;
+}
+
+.clear {
+    clear: both;
+}
+
+img.img_content {
+    width: 1256px;
+    position: absolute;
+    top: 2px;
+    left: -20px;
+}
+
+/* 内容 */
+.page-content {
+    width: 1235px;
+    /*height: 550px;*/
+    margin: 0 auto;
+    margin-top: 20px;
+    border: 1px solid #2b5f6a;
+    background-color: rgba(39, 56, 77, 1);
+    position: relative;
+}
+
+.periphery {
+    position: relative;
+    width: 1261px;
+    /*height: 630px;*/
+    padding-top: 4px;
+    padding-bottom: 20px;
+    margin-top: 145px;
+    border: 1px solid #2b5f6a;
+    border-top: none;
+}
+
+img.work_cont {
+    position: absolute;
+    width: 1261px;
+    top: 122px;
+    left: 0px;
+}
+
+.sel {
+    padding: 23px 25px;
+}
+
+.sel div {
+    float: left;
+    margin-left: 53px;
+}
+
+.sel div:first-child {
+    margin-left: 7px;
+}
+
+.sel input {
+    background: #204267;
+    border: 0px;
+    width: 100px;
+    height: 30px;
+}
+
+.sel select {
+    background: #204267;
+    border: 0px;
+    width: 140px;
+    height: 32px;
+    text-indent: 12px;
+}
+
+.sel button {
+    background: #204267;
+    border-radius: 2px;
+    border: #204267;
+    width: 109px;
+    height: 33px;
+    margin-left: 84px;
+    color: #26aac3;
+}
+
+.title ul, .cont ul {
+    list-style: none;
+    width: 98%;
+    background: #22456d;
+    margin: 0 auto;
+    padding: 0px;
+}
+
+.cont ul {
+    background: transparent;
+}
+
+.title ul li, .cont ul li {
+    display: inline-block;
+    padding: 10px 0px;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.title ul li:first-child, .cont ul li:first-child {
+    width: 103px;
+}
+
+.title ul li:first-child + li,
+.cont ul li:first-child + li {
+    width: 100px;
+}
+
+.title ul li:first-child + li + li, /* 兼容IE8 nth-child()不可用，可用jQuery */
+.cont ul li:first-child + li + li {
+    width: 136px;
+}
+
+.title ul li:first-child + li + li + li,
+.cont ul li:first-child + li + li + li {
+    width: 100px;
+}
+
+.title ul li:first-child + li + li + li + li,
+.cont ul li:first-child + li + li + li + li {
+    width: 123px;
+}
+
+.title ul li:first-child + li + li + li + li + li,
+.cont ul li:first-child + li + li + li + li + li {
+    width: 110px;
+}
+
+.title ul li:first-child + li + li + li + li + li + li,
+.cont ul li:first-child + li + li + li + li + li + li {
+    width: 154px;
+}
+
+.title ul li:first-child + li + li + li + li + li + li + li,
+.cont ul li:first-child + li + li + li + li + li + li + li {
+    width: 103px;
+}
+
+.title ul li:first-child + li + li + li + li + li + li + li + li,
+.cont ul li:first-child + li + li + li + li + li + li + li + li {
+    width: 160px;
+}
+
+.title ul li:first-child + li + li + li + li + li + li + li + li + li,
+.cont ul li:first-child + li + li + li + li + li + li + li + li + li {
+    /*width: 80px;*/
+    cursor: pointer;
+}
+
+.cont ul li > img {
+    height: 18px;
+    width: 18px;
+}
+
+.cont ul li.color {
+    color: #65e368;
+}
+
+.cont ul li.color_1 {
+    color: #f6d24a;
+}
+
+.cont ul li.color_2 {
+    color: red;
+}
+
+.page-content > div > img {
+    position: absolute;
+}
+
+#b_l_b {
+    top: 623px;
+}
+
+#b_r_t {
+    right: -1px;
+}
+
+#b_l_b {
+    top: 537px;
+    left: -1px;
+}
+
+#b_r_b {
+    top: 537px;
+    right: -1px;
+}
+
+.page-content > div > span {
+    color: #c4feff;
+    display: inline-block;
+    position: absolute;
+    width: 130px;
+    height: 27px;
+    left: 615px;
+    top: 70px;
+    line-height: 30px;
+    text-align: center;
+    background-color: #000a34;
+    font-size: 13px;
+}
+
+#l_l {
+    left: 544px;
+    top: -15px;
+}
+
+#l_r {
+    left: 664px;
+    top: -15px;
+}
+
+li.examine_1 {
+    cursor: pointer;
+}
+
+/*左侧标题*/
+span.bigMsg {
+    position: absolute;
+    top: -7px;
+    left: 2px;
+    display: block;
+    text-align: left;
+    text-indent: 17px;
+    font-size: 16px;
+    /*margin-top: 1%;*/
+    color: #c3efff;
+}
+
+.but {
+    background: #204267;
+    border-radius: 2px;
+    border: #204267;
+    width: 109px;
+    float: right;
+    height: 36px;
+    margin-top: 1.1%;
+    margin-right: 4%;
+    color: #26aac3;
+}

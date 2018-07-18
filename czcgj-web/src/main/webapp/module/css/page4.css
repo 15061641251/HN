@@ -1,0 +1,37 @@
+.wrap{
+	width: 800px;
+	height: 460px;
+	margin:50px auto;
+	background: #0e2B54;
+	font-size: 13px;
+	color: #C4DDF8;
+}
+.wrap div{
+	width: 100%;
+	background: #205A95;
+	height: 40px;
+	line-height: 40px;
+	padding: 0 10px;
+	color: white;
+}
+ .wrap div span{
+ 	display: inline-block;
+	position: relative;
+	left: 685px;
+} 
+table{
+	width: 780px;
+	height: 400px;
+	margin: 10px;
+	box-sizing: border-box;
+	text-align: center;
+}
+td{
+	border: 1px solid #1764A2;
+}
+.n{
+	width: 45px;
+}
+.reason{
+	width: 200px;
+}

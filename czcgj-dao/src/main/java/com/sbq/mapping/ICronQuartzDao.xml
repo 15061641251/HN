@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sbq.dao.ICronQuartzDao">
+    <select id="getCronQuartzListByMap" resultType="com.sbq.entity.CronQuartz">
+        select * from t_cron_quartz t
+        where 1 = 1
+        <if test="int_id != null">
+            AND t.int_id = #{int_id}
+        </if>
+        <if test="task_key != null">
+            AND t.task_key = #{task_key}
+        </if>
+        <if test="status != null">
+            AND t.status = #{status}
+        </if>
+    </select>
+
+    <update id="updateCronQuartzByMap" parameterType="map">
+        UPDATE t_cron_quartz
+        SET cron_exp = #{cron_exp},
+         time_stamp = NOW(),
+         create_time = NOW()
+        WHERE
+            device_int_id = #{timetask_id}
+    </update>
+</mapper>

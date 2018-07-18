@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sbq.dao.IIntervalQuartzDao">
+    <select id="getIntervalQuartzListByMap" resultType="com.sbq.entity.IntervalQuartz">
+        select * from t_interval_quartz t
+        where 1 = 1
+        <if test="int_id != null">
+            AND t.int_id = #{int_id}
+        </if>
+        <if test="task_key != null">
+            AND t.task_key = #{task_key}
+        </if>
+        <if test="status != null">
+            AND t.status = #{status}
+        </if>
+        <if test="device_int_id != null">
+            AND t.device_int_id = #{device_int_id}
+        </if>
+    </select>
+
+    <update id="updateIntervalQuartzByMap" parameterType="map">
+        UPDATE t_interval_quartz
+        SET
+        time_type = #{time_type},
+        value = #{value},
+         time_stamp = NOW(),
+         create_time = NOW()
+        WHERE
+            device_int_id = #{device_int_id}
+    </update>
+</mapper>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sbq.dao.ICompanyDao">
+    <select id="getInfoByMap" resultType="com.sbq.entity.Company">
+        select * from t_company t
+        where 1 = 1
+        <if test="company_name!= null">
+            and t.company_name like "%${company_name}%"
+        </if>
+        <if test="int_id != null">
+            and t.int_id = #{int_id}
+        </if>
+        limit 1
+    </select>
+</mapper>

@@ -1,0 +1,183 @@
+body {
+    padding: 10px;
+    overflow-x: hidden;
+    overflow-y: auto;
+
+}
+
+nav {
+    margin-bottom: 20px;
+}
+
+.submenu {
+    /*margin-bottom: 15px;*/
+}
+
+ul, ol {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.submenu nav ul {
+    height: 42px;
+    border-bottom: 3px solid #e0e0e0;
+}
+
+.submenu nav ul li {
+    float: left;
+    height: 42px;
+    line-height: 42px;
+}
+
+.submenu nav ul li.active a {
+    position: relative;
+    color: #333;
+    font-weight: 700;
+    margin-bottom: -20px;
+}
+
+.submenu nav ul li a {
+    display: block;
+    padding: 0 25px;
+    font-size: 18px;
+    text-decoration: none;
+}
+
+.submenu nav ul li a:hover {
+    color: #454545;
+    text-decoration: none;
+}
+
+.submenu nav ul li.active {
+    position: relative;
+    border-bottom: 3px solid #548cb8;
+    font-weight: 700;
+    margin-bottom: -3px;
+}
+
+table {
+    width: 100%;
+    border: 1px solid #ccc;
+}
+
+
+.submenu .nav-box {
+    padding: 20px;
+    background-color: #F5F5F5;
+    border: 1px solid #d3d3d3;
+    font-size: 14px;
+    color: #555;
+    font-family: Tahoma, "\5b8b\4f53", Arial, Helvetica, Arial, sans-serif;
+}
+
+label {
+    font-weight: normal;
+}
+
+.search-row > input {
+    height: 30px;
+    width: 160px;
+    border: 1px solid #ccc;
+}
+
+.table thead > tr > th {
+    vertical-align: middle;
+    font-size: 16px;
+}
+
+th {
+    background-color: #ffffff;
+    font-weight: 400;
+    color: #000;
+    border-bottom: 1px solid #ddd;
+    height: 45px;
+    text-align: center;
+    padding: 0px 8px;
+    border-left:  1px solid #dddddd;
+    border-right:  1px solid #dddddd;
+}
+
+tr {
+    text-align: center;
+}
+
+td {
+    font-size: 14px;
+}
+
+.page-list .page-total input {
+    height: 30px;
+    width: 160px;
+    border: 1px solid #ccc;
+}
+
+.page-list .no-items {
+    text-align: center;
+}
+
+.page-list .pagination {
+    float: right;
+}
+
+.page-list .pagination span {
+    cursor: pointer;
+}
+
+.page-list .pagination .separate span {
+    cursor: default;
+    border-top: none;
+    border-bottom: none;
+}
+
+.page-list .pagination .separate span:hover {
+    background: none;
+}
+
+.page-list .page-total {
+    float: right;
+    margin: 25px 20px;
+}
+
+.page-list .page-total input, .page-list .page-total select {
+    height: 26px;
+    border: 1px solid #ddd;
+}
+
+.page-list .page-total input {
+    width: 40px;
+    padding-left: 3px;
+}
+
+.page-list .page-total select {
+    width: 50px;
+}
+
+a {
+    color: #1F376D;
+    text-decoration: none;
+    margin-left: 10px;
+}
+
+a:hover, a:focus {
+    color: #1D81C7;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+td > input {
+    font-size: 15px;
+}
+
+td > textarea {
+    font-size: 14px;
+}
+
+td > div {
+    float: left;
+}
+
+.data-list {
+    width: 100%;
+}
+

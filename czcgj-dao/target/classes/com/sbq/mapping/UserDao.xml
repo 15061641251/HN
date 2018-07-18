@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sbq.dao.IUserDao">
+
+    <update id="updateToken">
+        update t_user t set t.device_token = #{new_token}
+        where 1 = 1
+        <if test="old_token">
+            and t.device_token = #{old_token}
+        </if>
+    </update>
+
+
+    <select id="getUserInfoByMap" parameterType="map" resultType="UserDto">
+        SELECT
+        u.*,
+        GROUP_CONCAT(CAST(ua.auth_id as char)) auth_ids,
+        d.dept_name,
+        c.company_name,
+        area.area_name
+        FROM
+        t_user u
+        LEFT JOIN t_user_auth ua
+        ON ua.user_id = u.int_id
+        LEFT JOIN a_dept d
+        ON u.dept_id = d.int_id
+        left join t_company c
+        on c.int_id = u.company_id
+        LEFT join t_area area
+        on area.int_id = u.area_id
+        WHERE 1 = 1 and u.stateflag = 0
+        <if test="account != null">
+            and u.account = #{account}
+        </if>
+        <if test="password != null">
+            and u.password = #{password}
+        </if>
+        <if test="int_id != null">
+            and u.int_id = #{int_id}
+        </if>
+        <if test="dept_id != null">
+            and u.dept_id = #{dept_id}
+        </if>
+        <if test="job_id != null">
+            and u.job_id = #{job_id}
+        </if>
+        GROUP BY u.int_id
+        ORDER BY u.dept_id,u.order_index limit 1
+    </select>
+
+    <select id="getUserListByMap" parameterType="map" resultType="com.sbq.entity.dto.UserDto">
+        SELECT
+        u.*,
+        GROUP_CONCAT(CAST(ua.auth_id as char)) auth_ids,
+        d.dept_name,
+        c.company_name,
+        area.area_name
+        FROM
+        t_user u
+        LEFT JOIN t_user_auth ua
+        ON ua.user_id = u.int_id
+        LEFT JOIN a_dept d
+        ON u.dept_id = d.int_id
+        left join t_company c
+        on c.int_id = u.company_id
+        LEFT join t_area area
+        on u.area_id = area.int_id
+        WHERE 1 = 1 and u.stateflag = 0
+        <if test="dept_id != null">
+            and u.dept_id = #{dept_id}
+        </if>
+        <if test="job_id != null">
+            and FIND_IN_SET(u.job_id,#{job_id})
+        </if>
+        <if test="company_name != null">
+            and c.company_name like "%${company_name}%"
+        </if>
+        <if test="mobile != null">
+            and u.mobile like "%${mobile}%"
+        </if>
+        <if test="username != null">
+            and u.username like "%${username}%"
+        </if>
+        <if test="account != null">
+            and u.account like "%${account}%"
+        </if>
+        <if test="company_id != null">
+            and u.company_id = #{company_id}
+        </if>
+        <if test="area_name != null">
+            and area.area_name like "%${area_name}%"
+        </if>
+        GROUP BY u.int_id
+        ORDER BY u.dept_id,u.order_index
+    </select>
+
+    <select id="selectAllMembers" resultType="UserDto">
+        SELECT * FROM t_user
+        WHERE STATEFLAG = 0
+    </select>
+
+    <select id="getLastUserList" resultType="DeptOrUserDto">
+       SELECT
+          u.int_id                                  ,
+          u.stateflag,
+          date_format(u.CREATE_TIME, '%Y-%m-%d %T') create_time,
+          date_format(u.time_stamp, '%Y-%m-%d %T')  time_stamp,
+          u.account,
+          u.username                                name,
+          u.mobile,
+          u.mobile2,
+          u.email,
+          u.sex,
+          u.address,
+          u.dept_id,
+          u.dept_id                                 parent_id,
+          u.head_url,
+          u.tel,
+          'member'                                  type,
+          u.is_enabled,
+          u.order_index
+        FROM t_user u
+        WHERE u.time_stamp > date(#{time_stamp})
+        ORDER BY u.dept_id, u.ORDER_INDEX, u.INT_ID
+    </select>
+
+    <select id="getAllUserList" resultType="DeptOrUserDto">
+       SELECT
+          u.int_id                                  ,
+          u.stateflag,
+          date_format(u.CREATE_TIME, '%Y-%m-%d %T') create_time,
+          date_format(u.time_stamp, '%Y-%m-%d %T')  time_stamp,
+          u.account,
+          u.username                                name,
+          u.mobile,
+          u.mobile2,
+          u.email,
+          u.sex,
+          u.address,
+          u.dept_id,
+          u.dept_id                                 parent_id,
+          u.head_url,
+          u.tel,
+          'member'                                  type,
+          u.is_enabled,
+          u.order_index
+        FROM t_user u
+        WHERE STATEFLAG = 0
+        ORDER BY u.dept_id, u.ORDER_INDEX, u.INT_ID
+    </select>
+
+    <select id="getUserInfoByIds" parameterType="string" resultType="com.sbq.entity.dto.UserDto">
+        SELECT
+            t.INT_ID,
+            t.USERNAME,
+            t.ACCOUNT,
+            t.SEX,
+            t.TEL,
+            t.MOBILE,
+            t.MOBILE2,
+            t.EMAIL,
+            t.ADDRESS,
+            t.ORDER_INDEX,
+            t.HEAD_URL,
+            t.DEPT_ID,
+            t2.DEPT_NAME,
+            t.APP_TYPE
+        FROM
+            t_user t
+        LEFT JOIN a_dept t2 ON t.DEPT_ID = t2.INT_ID
+        WHERE
+            t.INT_ID IN (${userids})
+        ORDER BY
+            FIND_IN_SET(t.INT_ID, '${userids}')
+    </select>
+
+    <select id="getAllUserListDeptMemberDto" resultType="com.sbq.entity.dto.DeptMemberDto">
+        SELECT
+          u.int_id                                  ,
+          u.stateflag,
+          date_format(u.CREATE_TIME, '%Y-%m-%d %T') create_time,
+          date_format(u.time_stamp, '%Y-%m-%d %T')  time_stamp,
+          u.account,
+          u.username                                name,
+          u.mobile,
+          u.mobile2,
+          u.email,
+          u.sex,
+          u.address,
+          u.dept_id,
+          u.dept_id                                 parent_id,
+          u.head_url,
+          u.tel,
+          'member'                                  type,
+          u.is_enabled,
+          u.order_index
+        FROM t_user u
+        WHERE STATEFLAG = 0
+        ORDER BY u.dept_id, u.ORDER_INDEX, u.INT_ID
+    </select>
+</mapper>

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:task="http://www.springframework.org/schema/task"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+           http://www.springframework.org/schema/aop
+						http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+           http://www.springframework.org/schema/tx
+						http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+           http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context-2.5.xsd
+        http://www.springframework.org/schema/task
+        http://www.springframework.org/schema/task/spring-task-3.0.xsd">
+
+    <import resource="mybatis-spring.xml"/>
+    <import resource="spring-common.xml"/>
+    <!--<import resource="applicationContext-ehcache.xml"/>-->
+
+    <import resource="classpath:mq/application-mq.xml"/>
+
+    <!--<import resource="classpath:activiti/activiti.cfg.xml"/>-->
+
+    <aop:aspectj-autoproxy/>
+
+    <context:annotation-config/>
+
+    <bean id="taskExecutor" class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor">
+        <!-- 核心线程数 -->
+        <property name="corePoolSize" value="2"/>
+        <!-- 最大线程数 -->
+        <property name="maxPoolSize" value="4"/>
+        <!-- 队列最大长度 -->
+        <property name="queueCapacity" value="10"/>
+        <!-- 线程池维护线程所允许的空闲时间，默认为60s -->
+        <property name="keepAliveSeconds" value="60"/>
+    </bean>
+
+    <task:annotation-driven executor="taskExecutor" proxy-target-class="true"/>
+
+    <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="locations">
+            <list>
+                <value>classpath:jdbc.properties</value>
+                <value>classpath:mq/mq.properties</value>
+            </list>
+        </property>
+    </bean>
+
+    <!--<context:property-placeholder location="classpath*:*.properties"/>-->
+    <!-- 自动扫描的包名 -->
+    <context:component-scan base-package="com.sbq"/>
+
+    <bean id="springContext" class="com.sbq.tools.SpringContext"></bean>
+
+    <!-- 总管理类 如果将lazy-init='false'那么容器启动就会执行调度程序  -->
+    <bean id="startQuertz" lazy-init="true" autowire="no"
+          class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+    </bean>
+
+    <!--这个类是用来设置触发时间的， startJobs方法启动调度容器，然后按照上面触发器每隔1s执行所配置的myJob2.doSomething()方法 -->
+    <bean id="quartzManager" class="com.sbq.quartz.QuartzCronManager" lazy-init="false" init-method="startJobs">
+        <!--这个对象一定要注入，这样类才能进行管理，还有在类型要用get set方法，不然会报错。-->
+        <property name="scheduler" ref="startQuertz"/>
+    </bean>
+
+    <!--这个类是用来设置触发时间的， startJobs方法启动调度容器，然后按照上面触发器每隔1s执行所配置的myJob2.doSomething()方法 -->
+    <bean id="quartzIntervalManager" class="com.sbq.quartz.QuartzIntervalManager" lazy-init="false"
+          init-method="startJobs">
+        <!--这个对象一定要注入，这样类才能进行管理，还有在类型要用get set方法，不然会报错。-->
+        <property name="scheduler" ref="startQuertz"/>
+    </bean>
+
+</beans>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sbq.dao.IAreaDao">
+
+    <select id="getAreaListByPage" resultType="com.sbq.entity.dto.AreaDto">
+        select * from t_area t
+        LEFT JOIN t_company t2
+        on t.company_id = t2.int_id
+        where 1 = 1
+        <if test="company_id != null">
+            and t.company_id = #{company_id}
+        </if>
+        <if test="company_name != null">
+            and t2.company_name like "%${company_name}%"
+        </if>
+        <if test="area_name != null">
+            and t.area_name like "%${area_name}%"
+        </if>
+        <if test="leader_name != null">
+            and t.leader_name like "%${leader_name}%"
+        </if>
+        <if test="leader_phone != null">
+            and t.leader_phone like "%${leader_phone}%"
+        </if>
+    </select>
+
+    <select id="getInfoByMap" resultType="com.sbq.entity.Area">
+        select * from t_area t
+        LEFT JOIN t_company t2
+        on t.company_id = t2.int_id
+        where 1 = 1
+        <if test="int_id != null">
+            and t.int_id = #{int_id}
+        </if>
+    </select>
+</mapper>

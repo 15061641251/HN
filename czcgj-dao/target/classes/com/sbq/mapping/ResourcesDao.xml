@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sbq.dao.IResourcesDao">
+	<select id="getResourcesDetailByMap" parameterType="map"
+		resultType="Resources">
+		SELECT
+		t1.int_id
+		authority_id,
+		t1.name   authority_name,
+		t1.description
+		authority_description,
+		t3.int_id int_id,
+		t3.parent_id,
+		t3.name
+		name,
+		t3.description
+		description,
+		t3.is_show
+		FROM
+		t_authority t1
+		JOIN t_auth_res
+		t2 ON t1.int_id
+		= t2.authority_id
+		LEFT
+		JOIN t_resources t3 ON
+		t2.resources_id =
+		t3.int_id
+		WHERE 1 = 1
+		AND
+		t3.is_enabled = 1
+		<if test="authId != null">
+			AND t1.int_id = #{authId}
+		</if>
+	</select>
+
+</mapper>

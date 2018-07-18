@@ -1,0 +1,54 @@
+server:
+  #port: 8001
+  context-path: /czcgj-ws
+
+mybatis:
+    type-aliases-package: com.sbq.entity
+    mapper-locations: classpath:com/sbq/mapping/**/*.xml
+
+mapper:
+    mappers:
+        com.sbq.util.MyMapper
+    not-empty: false
+    identity: MYSQL
+
+pagehelper:
+    helperDialect: mysql
+    reasonable: true
+    supportMethodsArguments: true
+    params: count=countSql
+
+logging:
+  config: classpath:logback.xml
+
+spring:
+  jackson:
+    time-zone: GMT+8
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://112.33.14.160:8082/czcgj?useUnicode=true&characterEncoding=utf-8
+    username: root
+    password: 123456Abc?
+    initialSize: 5
+    minIdle: 5
+    maxActive: 20
+    maxWait: 60000
+    validationQuery: SELECT 1 FROM DUAL
+    testOnBorrow: true
+    testOnReturn: false
+    testWhileIdle: false
+    minEvictableIdleTimeMillis: 25200000
+    timeBetweenEvictionRunsMillis: 60000
+    removeAbandoned: true
+    removeAbandonedTimeout: 1800
+    poolPreparedStatements: true
+    maxPoolPreparedStatementPerConnectionSize: 20
+    logAbandoned: true
+    filters: stat,wall,log4j
+    resetStatEnable: true
+  activiti:
+    async-executor-enabled: false
+    check-process-definitions: false
+    async-executor-activate: false
+
